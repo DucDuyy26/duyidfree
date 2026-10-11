@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f172a" />
-  <title>Nova Store — Cửa hàng của bạn</title>
+  <title>DUYBOM STORE — Cửa hàng của bạn</title>
   <meta name="description" content="Cửa hàng trực tuyến hiện đại, mua sắm nhanh chóng và thanh toán chuyển khoản VietQR." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -32,22 +32,15 @@
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
-  <!--
-    HƯỚNG DẪN CẤU HÌNH:
-    1) Sửa thông tin cửa hàng trong phần HEADER/FOOTER bên dưới.
-    2) Sửa mảng PRODUCTS trong JavaScript để thay tên, giá, mô tả và hình sản phẩm.
-    3) Điền BANK_ID, ACCOUNT_NO, ACCOUNT_NAME trong phần CẤU HÌNH VIETQR.
-       Ví dụ BANK_ID có thể là mã ngân hàng được VietQR hỗ trợ (vd: 'VCB').
-    4) Đây là giao diện front-end mẫu. Muốn nhận đơn hàng tự động, cần kết nối backend/API.
-  -->
 
   <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Menu chính">
-      <a href="#trang-chu" class="flex items-center gap-2.5" aria-label="Nova Store - Trang chủ">
-        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-slate-900 text-lg font-black text-white">N</span>
+      <a href="#trang-chu" class="flex items-center gap-2.5" aria-label="DUYBOM STORE - Trang chủ">
+        <!-- ĐÃ ĐỔI THÀNH THẺ ẢNH -->
+        <img src="https://i.postimg.cc/P5QwM2mz/B8708FFF-2873-425E-81A6-76FECF2C4C74.png" alt="Logo" class="h-10 w-10 rounded-full object-cover">
         <span>
-          <span class="block text-base font-extrabold tracking-tight">Nova Store</span>
-          <span class="block text-[11px] font-medium text-slate-500">Mua sắm thông minh</span>
+          <span class="block text-base font-extrabold tracking-tight">DUY STORE</span>
+          <span class="block text-[11px] font-medium text-slate-500">Game & App iOS</span>
         </span>
       </a>
 
@@ -87,52 +80,7 @@
               Hướng dẫn thanh toán
             </a>
           </div>
-          <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-slate-600">
-            <span class="flex items-center gap-2"><span class="text-emerald-600">✓</span> Giá cả minh bạch</span>
-            <span class="flex items-center gap-2"><span class="text-emerald-600">✓</span> Đặt hàng dễ dàng</span>
-            <span class="flex items-center gap-2"><span class="text-emerald-600">✓</span> VietQR tiện lợi</span>
-          </div>
         </div>
-
-        <div class="relative mx-auto w-full max-w-xl">
-          <div class="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-indigo-200/70 via-white to-teal-100/80 blur-2xl"></div>
-          <div class="relative rounded-[2rem] border border-white bg-white p-4 shadow-soft sm:p-6">
-            <div class="flex items-center justify-between px-1 pb-4">
-              <div>
-                <p class="text-xs font-bold uppercase tracking-[.18em] text-slate-400">Bộ sưu tập</p>
-                <p class="mt-1 text-lg font-extrabold">Được yêu thích</p>
-              </div>
-              <span class="rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-bold text-emerald-700">Nổi bật</span>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="rounded-3xl bg-gradient-to-br from-indigo-100 to-violet-100 p-5">
-                <div class="grid aspect-square place-items-center rounded-2xl bg-white/60 text-6xl">🎧</div>
-                <p class="mt-4 font-extrabold">Phụ kiện công nghệ</p>
-                <p class="mt-1 text-sm text-slate-500">Thiết kế tinh gọn</p>
-              </div>
-              <div class="mt-8 rounded-3xl bg-gradient-to-br from-teal-50 to-emerald-100 p-5">
-                <div class="grid aspect-square place-items-center rounded-2xl bg-white/60 text-6xl">✨</div>
-                <p class="mt-4 font-extrabold">Sản phẩm nổi bật</p>
-                <p class="mt-1 text-sm text-slate-500">Lựa chọn mỗi ngày</p>
-              </div>
-            </div>
-            <div class="mt-4 flex items-center justify-between rounded-2xl bg-slate-900 p-4 text-white">
-              <div>
-                <p class="text-xs text-slate-300">Trải nghiệm mua sắm</p>
-                <p class="mt-1 font-bold">Đơn giản · Nhanh chóng</p>
-              </div>
-              <span class="grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-xl">↗</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="border-y border-slate-200 bg-white">
-      <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 py-6 sm:grid-cols-3 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-indigo-50 text-xl">🚚</span><div><p class="font-bold">Giao hàng thuận tiện</p><p class="text-sm text-slate-500">Thông tin đơn hàng rõ ràng</p></div></div>
-        <div class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-emerald-50 text-xl">🔒</span><div><p class="font-bold">Thanh toán an tâm</p><p class="text-sm text-slate-500">Quét mã VietQR nhanh chóng</p></div></div>
-        <div class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-amber-50 text-xl">💬</span><div><p class="font-bold">Hỗ trợ tận tình</p><p class="text-sm text-slate-500">Liên hệ khi bạn cần giúp đỡ</p></div></div>
       </div>
     </section>
 
@@ -141,21 +89,10 @@
         <div>
           <p class="text-xs font-extrabold uppercase tracking-[.2em] text-brand-600">Danh mục sản phẩm</p>
           <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Chọn món bạn thích</h2>
-          <p class="mt-3 max-w-xl text-slate-600">Đây là dữ liệu mẫu. Hãy thay tên, mô tả, giá và hình ảnh theo sản phẩm thực tế của cửa hàng.</p>
         </div>
-        <span id="product-count" class="text-sm font-semibold text-slate-500">6 sản phẩm</span>
+        <span id="product-count" class="text-sm font-semibold text-slate-500"></span>
       </div>
-
-      <div class="mt-8 flex flex-wrap gap-2" id="category-filters" aria-label="Lọc danh mục">
-        <button data-category="Tất cả" class="filter-btn rounded-full bg-slate-900 px-4 py-2 text-sm font-bold text-white">Tất cả</button>
-        <button data-category="Công nghệ" class="filter-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 hover:text-brand-700">Công nghệ</button>
-        <button data-category="Phụ kiện" class="filter-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 hover:text-brand-700">Phụ kiện</button>
-        <button data-category="Phong cách sống" class="filter-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 hover:text-brand-700">Phong cách sống</button>
-      </div>
-
-      <div id="product-grid" class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Product cards are rendered by JavaScript. -->
-      </div>
+      <div id="product-grid" class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
     </section>
 
     <section id="thanh-toan" class="bg-slate-900 py-16 text-white sm:py-20">
@@ -164,12 +101,6 @@
           <p class="text-xs font-extrabold uppercase tracking-[.2em] text-indigo-300">Thanh toán tiện lợi</p>
           <h2 class="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Quét mã VietQR, thanh toán trong vài giây.</h2>
           <p class="mt-5 max-w-xl leading-7 text-slate-300">Mở ứng dụng ngân hàng, chọn quét QR và kiểm tra kỹ tên người nhận, số tiền cùng nội dung chuyển khoản trước khi xác nhận.</p>
-          <div class="mt-7 space-y-4">
-            <div class="flex gap-3"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/10 font-bold">1</span><p class="pt-1 text-sm text-slate-200">Chọn sản phẩm và nhấn <b>Mua ngay</b>.</p></div>
-            <div class="flex gap-3"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/10 font-bold">2</span><p class="pt-1 text-sm text-slate-200">Quét mã QR hoặc chuyển khoản theo thông tin bên cạnh.</p></div>
-            <div class="flex gap-3"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/10 font-bold">3</span><p class="pt-1 text-sm text-slate-200">Lưu lại biên lai và liên hệ cửa hàng để xác nhận đơn.</p></div>
-          </div>
-          <p class="mt-7 rounded-xl border border-amber-300/20 bg-amber-300/10 p-4 text-sm leading-6 text-amber-100">Lưu ý: chỉ chuyển khoản sau khi đã xác minh thông tin người nhận. Mã QR sẽ hoạt động sau khi bạn cấu hình tài khoản ngân hàng ở cuối file.</p>
         </div>
 
         <div class="rounded-[2rem] bg-white p-5 text-slate-900 shadow-2xl sm:p-7">
@@ -180,7 +111,7 @@
           <div class="mt-5 grid place-items-center rounded-2xl border border-slate-100 bg-slate-50 p-4">
             <img id="vietqr-image" class="hidden h-56 w-56 object-contain" alt="Mã QR chuyển khoản ngân hàng VietQR" />
             <div id="qr-placeholder" class="grid h-56 w-56 place-items-center rounded-xl border-2 border-dashed border-slate-300 p-5 text-center">
-              <div><div class="text-5xl">▦</div><p class="mt-3 text-sm font-bold text-slate-700">Chưa cấu hình mã QR</p><p class="mt-1 text-xs leading-5 text-slate-500">Điền thông tin ngân hàng trong phần cấu hình JavaScript ở cuối file.</p></div>
+              <div><div class="text-5xl">▦</div><p class="mt-3 text-sm font-bold text-slate-700">Chưa cấu hình mã QR</p></div>
             </div>
           </div>
           <dl class="mt-5 space-y-3 text-sm">
@@ -196,24 +127,9 @@
   </main>
 
   <footer id="lien-he" class="bg-white">
-    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3 lg:px-8">
-      <div>
-        <a href="#trang-chu" class="flex items-center gap-2.5"><span class="grid h-10 w-10 place-items-center rounded-2xl bg-slate-900 font-black text-white">N</span><span class="text-lg font-extrabold">Nova Store</span></a>
-        <p class="mt-4 max-w-sm text-sm leading-6 text-slate-500">Cửa hàng trực tuyến của bạn — mang đến trải nghiệm mua sắm gọn gàng, dễ dùng và đáng tin cậy.</p>
-      </div>
-      <div>
-        <h3 class="font-extrabold">Liên kết nhanh</h3>
-        <ul class="mt-4 space-y-2.5 text-sm text-slate-500"><li><a class="hover:text-brand-600" href="#san-pham">Sản phẩm</a></li><li><a class="hover:text-brand-600" href="#thanh-toan">Hướng dẫn thanh toán</a></li><li><a class="hover:text-brand-600" href="#lien-he">Chính sách & hỗ trợ</a></li></ul>
-      </div>
-      <div>
-        <h3 class="font-extrabold">Liên hệ</h3>
-        <ul class="mt-4 space-y-2.5 text-sm text-slate-500"><li>Email: <a href="mailto:hello@example.com" class="font-semibold text-slate-700 hover:text-brand-600">hello@example.com</a></li><li>Hotline: <a href="tel:0900000000" class="font-semibold text-slate-700 hover:text-brand-600">0900 000 000</a></li><li>Thời gian hỗ trợ: 08:00–21:00</li></ul>
-      </div>
-    </div>
-    <div class="border-t border-slate-100"><div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"><p>© <span id="year"></span> Nova Store. Bảo lưu mọi quyền.</p><p>Thiết kế với sự đơn giản và tiện lợi.</p></div></div>
+    <div class="border-t border-slate-100"><div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8"><p>© <span id="year"></span> DUY STORE. Bảo lưu mọi quyền.</p></div></div>
   </footer>
 
-  <!-- Buy modal -->
   <div id="buy-modal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="my-auto w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl sm:p-8">
       <div class="flex items-start justify-between gap-4">
@@ -227,7 +143,6 @@
         <div><label for="customer-contact" class="mb-1.5 block text-sm font-bold">Số điện thoại hoặc email</label><input id="customer-contact" required maxlength="120" class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-indigo-100" placeholder="Để cửa hàng liên hệ xác nhận" /></div>
         <div><label for="order-note" class="mb-1.5 block text-sm font-bold">Ghi chú (không bắt buộc)</label><textarea id="order-note" rows="2" maxlength="300" class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none transition focus:border-brand-500 focus:ring-4 focus:ring-indigo-100" placeholder="Ví dụ: màu sắc, số lượng..."></textarea></div>
         <button type="submit" class="w-full rounded-xl bg-brand-600 px-5 py-3.5 font-extrabold text-white transition hover:bg-brand-700">Tạo nội dung đơn hàng</button>
-        <p class="text-xs leading-5 text-slate-500">Mẫu này chưa gửi đơn lên máy chủ. Sau khi tạo, bạn có thể sao chép nội dung để gửi cho cửa hàng.</p>
       </form>
       <div id="order-result" class="mt-4 hidden rounded-2xl border border-emerald-200 bg-emerald-50 p-4">
         <p class="font-extrabold text-emerald-900">Đã tạo nội dung đơn hàng</p>
@@ -240,28 +155,23 @@
   <div id="toast" class="fixed bottom-5 left-1/2 z-[60] hidden -translate-x-1/2 rounded-full bg-slate-900 px-5 py-3 text-sm font-bold text-white shadow-xl" role="status" aria-live="polite"></div>
 
   <script>
-    // =========================
-    // CẤU HÌNH VIETQR — HÃY THAY BẰNG THÔNG TIN THẬT CỦA BẠN
-    // Để trống ACCOUNT_NO nếu chưa muốn hiển thị mã QR.
-    // =========================
+    // =========================================
+    // CẤU HÌNH VIETQR (Đã điền sẵn thông tin của bạn)
+    // =========================================
     const BANK_CONFIG = {
-      bankId: "",       // Mã ngân hàng VietQR, ví dụ: "VCB", "ACB", "MB"
-      bankName: "",     // Tên ngân hàng hiển thị, ví dụ: "Vietcombank"
-      accountNo: "",    // Số tài khoản nhận tiền
-      accountName: "",  // Tên chủ tài khoản, viết IN HOA không dấu sẽ tương thích tốt hơn
+      bankId: "MB",         
+      bankName: "MB Bank",  
+      accountNo: "2620093152009", 
+      accountName: "PHAM DUC DUY", 
       qrTemplate: "compact2"
     };
 
-    // =========================
-    // SẢN PHẨM MẪU — CHỈNH SỬA DANH SÁCH NÀY
-    // =========================
+    // =========================================
+    // SẢN PHẨM (Bạn có thể thêm/sửa tại đây)
+    // =========================================
     const PRODUCTS = [
-      { id: 1, name: "Tai nghe không dây", category: "Công nghệ", price: 399000, oldPrice: 499000, emoji: "🎧", gradient: "from-indigo-100 to-violet-200", tag: "Bán chạy", description: "Âm thanh sống động, thiết kế gọn nhẹ, phù hợp mỗi ngày." },
-      { id: 2, name: "Bàn phím cơ mini", category: "Công nghệ", price: 650000, oldPrice: null, emoji: "⌨️", gradient: "from-sky-100 to-blue-200", tag: "Mới", description: "Kiểu dáng tối giản, trải nghiệm gõ thoải mái và chính xác." },
-      { id: 3, name: "Bình giữ nhiệt", category: "Phong cách sống", price: 189000, oldPrice: 229000, emoji: "🥤", gradient: "from-emerald-100 to-teal-200", tag: "Ưu đãi", description: "Người bạn đồng hành tiện dụng khi đi học, đi làm hoặc du lịch." },
-      { id: 4, name: "Ốp lưng tối giản", category: "Phụ kiện", price: 99000, oldPrice: null, emoji: "📱", gradient: "from-rose-100 to-pink-200", tag: "", description: "Phong cách thanh lịch, dễ phối hợp với nhiều cá tính." },
-      { id: 5, name: "Đèn bàn hiện đại", category: "Phong cách sống", price: 279000, oldPrice: 329000, emoji: "💡", gradient: "from-amber-100 to-orange-200", tag: "Phổ biến", description: "Ánh sáng dễ chịu, tạo cảm hứng cho góc học tập và làm việc." },
-      { id: 6, name: "Chuột không dây", category: "Phụ kiện", price: 219000, oldPrice: null, emoji: "🖱️", gradient: "from-cyan-100 to-sky-200", tag: "", description: "Gọn nhẹ, dễ sử dụng, phù hợp với không gian làm việc hiện đại." }
+      { id: 1, name: "Thuê ID Apple", category: "Dịch vụ", price: 19999, oldPrice: 30000, emoji: "🍏", gradient: "from-indigo-100 to-violet-200", tag: "Hot", description: "Dịch vụ thuê ID Apple theo sản phẩm uy tín, nhanh chóng." },
+      { id: 2, name: "Tài khoản Minecraft", category: "Game", price: 250000, oldPrice: 300000, emoji: "⛏️", gradient: "from-emerald-100 to-teal-200", tag: "Phổ biến", description: "Tài khoản Minecraft Java & Bedrock chính hãng." }
     ];
 
     const money = value => new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND", maximumFractionDigits: 0 }).format(value);
@@ -269,36 +179,24 @@
     const modal = document.getElementById("buy-modal");
     let activeProduct = null;
 
-    function renderProducts(category = "Tất cả") {
-      const visible = category === "Tất cả" ? PRODUCTS : PRODUCTS.filter(p => p.category === category);
-      document.getElementById("product-count").textContent = `${visible.length} sản phẩm`;
-      productGrid.innerHTML = visible.map(p => `
+    function renderProducts() {
+      document.getElementById("product-count").textContent = `${PRODUCTS.length} sản phẩm`;
+      productGrid.innerHTML = PRODUCTS.map(p => `
         <article class="product-card overflow-hidden rounded-3xl border border-slate-200/80 bg-white">
           <div class="relative bg-gradient-to-br ${p.gradient} p-5">
             ${p.tag ? `<span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-extrabold text-slate-700">${p.tag}</span>` : ""}
             <div class="grid aspect-[1.55/1] place-items-center rounded-2xl bg-white/40 text-7xl">${p.emoji}</div>
           </div>
           <div class="p-5">
-            <div class="flex items-center justify-between gap-3"><span class="text-xs font-bold text-brand-600">${p.category}</span><span class="text-xs text-amber-500">★★★★★</span></div>
+            <div class="flex items-center justify-between gap-3"><span class="text-xs font-bold text-brand-600">${p.category}</span></div>
             <h3 class="mt-2 text-lg font-extrabold">${p.name}</h3>
             <p class="mt-2 min-h-[48px] text-sm leading-6 text-slate-500">${p.description}</p>
-            <div class="mt-4 flex items-end gap-2">${`<span class="text-xl font-black text-slate-900">${money(p.price)}</span>`}${p.oldPrice ? `<span class="pb-0.5 text-sm text-slate-400 line-through">${money(p.oldPrice)}</span>` : ""}</div>
+            <div class="mt-4 flex items-end gap-2"><span class="text-xl font-black text-slate-900">${money(p.price)}</span></div>
             <button data-buy="${p.id}" class="mt-5 w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-extrabold text-white transition hover:bg-brand-600">Mua ngay <span aria-hidden="true">→</span></button>
           </div>
         </article>
       `).join("");
     }
-
-    document.getElementById("category-filters").addEventListener("click", event => {
-      const button = event.target.closest("button[data-category]");
-      if (!button) return;
-      document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.className = btn === button
-          ? "filter-btn rounded-full bg-slate-900 px-4 py-2 text-sm font-bold text-white"
-          : "filter-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 hover:text-brand-700";
-      });
-      renderProducts(button.dataset.category);
-    });
 
     productGrid.addEventListener("click", event => {
       const button = event.target.closest("button[data-buy]");
@@ -316,7 +214,6 @@
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       document.body.classList.add("overflow-hidden");
-      setTimeout(() => document.getElementById("customer-name").focus(), 50);
     });
 
     function closeModal() {
@@ -325,78 +222,42 @@
       document.body.classList.remove("overflow-hidden");
     }
     document.getElementById("close-modal").addEventListener("click", closeModal);
-    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal(); });
 
     document.getElementById("order-form").addEventListener("submit", event => {
       event.preventDefault();
       const name = document.getElementById("customer-name").value.trim();
       const contact = document.getElementById("customer-contact").value.trim();
-      const note = document.getElementById("order-note").value.trim();
-      const orderCode = "NS" + Date.now().toString().slice(-8);
-      const content = [
-        "ĐƠN HÀNG " + orderCode,
-        "Sản phẩm: " + activeProduct.name,
-        "Danh mục: " + activeProduct.category,
-        "Giá: " + money(activeProduct.price),
-        "Khách hàng: " + name,
-        "Liên hệ: " + contact,
-        note ? "Ghi chú: " + note : null,
-        "Nội dung chuyển khoản gợi ý: " + orderCode
-      ].filter(Boolean).join("\n");
+      const orderCode = "DUY" + Date.now().toString().slice(-6);
+      const content = `ĐƠN HÀNG ${orderCode}\nSản phẩm: ${activeProduct.name}\nGiá: ${money(activeProduct.price)}\nKhách: ${name} (${contact})\nCK nội dung: ${orderCode}`;
       document.getElementById("order-text").textContent = content;
       document.getElementById("order-result").classList.remove("hidden");
       document.getElementById("order-form").classList.add("hidden");
     });
 
     async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        return true;
-      } catch (_) {
-        const textarea = document.createElement("textarea");
-        textarea.value = text;
-        textarea.style.position = "fixed";
-        textarea.style.opacity = "0";
-        document.body.appendChild(textarea);
-        textarea.select();
-        const ok = document.execCommand("copy");
-        textarea.remove();
-        return ok;
-      }
-    }
-    function showToast(message) {
-      const toast = document.getElementById("toast");
-      toast.textContent = message;
-      toast.classList.remove("hidden");
-      clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => toast.classList.add("hidden"), 2600);
+      await navigator.clipboard.writeText(text);
+      return true;
     }
     document.getElementById("copy-order").addEventListener("click", async () => {
-      const ok = await copyText(document.getElementById("order-text").textContent);
-      showToast(ok ? "Đã sao chép nội dung đơn hàng" : "Không thể sao chép tự động");
+      await copyText(document.getElementById("order-text").textContent);
+      alert("Đã sao chép nội dung đơn hàng!");
     });
 
     function setupVietQR() {
       const ready = BANK_CONFIG.bankId.trim() && BANK_CONFIG.accountNo.trim() && BANK_CONFIG.accountName.trim();
       if (!ready) return;
-      document.getElementById("bank-name").textContent = BANK_CONFIG.bankName || BANK_CONFIG.bankId;
+      document.getElementById("bank-name").textContent = BANK_CONFIG.bankName;
       document.getElementById("account-number").textContent = BANK_CONFIG.accountNo;
       document.getElementById("account-holder").textContent = BANK_CONFIG.accountName;
-      const params = new URLSearchParams({ accountName: BANK_CONFIG.accountName });
-      const qrUrl = `https://img.vietqr.io/image/${encodeURIComponent(BANK_CONFIG.bankId)}-${encodeURIComponent(BANK_CONFIG.accountNo)}-${encodeURIComponent(BANK_CONFIG.qrTemplate)}.png?${params.toString()}`;
+      const qrUrl = `https://img.vietqr.io/image/${BANK_CONFIG.bankId}-${BANK_CONFIG.accountNo}-${BANK_CONFIG.qrTemplate}.png?accountName=${encodeURIComponent(BANK_CONFIG.accountName)}`;
       const img = document.getElementById("vietqr-image");
       img.src = qrUrl;
       img.onload = () => { img.classList.remove("hidden"); document.getElementById("qr-placeholder").classList.add("hidden"); };
-      img.onerror = () => { img.classList.add("hidden"); document.getElementById("qr-placeholder").classList.remove("hidden"); };
     }
+
     document.getElementById("copy-account").addEventListener("click", async () => {
-      if (!BANK_CONFIG.accountNo.trim()) {
-        showToast("Hãy cấu hình số tài khoản trong file index.html trước");
-        return;
-      }
-      const ok = await copyText(BANK_CONFIG.accountNo);
-      document.getElementById("copy-status").textContent = ok ? "Đã sao chép số tài khoản." : "Không thể sao chép tự động.";
+      await copyText(BANK_CONFIG.accountNo);
+      document.getElementById("copy-status").textContent = "Đã sao chép số tài khoản!";
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
