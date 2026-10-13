@@ -265,7 +265,7 @@
   </script>
 ```html
 <!-- DUY STORE: ĐĂNG NHẬP / ĐĂNG KÝ -->
-<div id="auth-area" class="fixed top-4 right-4 z-50 flex gap-2">
+<div id="auth-area" class="fixed top-4 right-4 z-50 flex flex-col items-end gap-2">
   <button onclick="openAuth('login')"
     class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">
     Đăng nhập
@@ -435,23 +435,23 @@ auth.onAuthStateChanged(function (user) {
   if (user) {
     area.innerHTML = "";
 
-    // Hiện email
-    const emailLabel = document.createElement("span");
-    emailLabel.className =
-      "bg-white rounded-xl px-3 py-2 text-gray-800 shadow";
-    emailLabel.textContent = user.email || "Tài khoản";
-    area.appendChild(emailLabel);
-
-    // Nút đăng xuất luôn hiện ở ngoài
+  // Đưa nút Đăng xuất lên trên
     const logoutButton = document.createElement("button");
     logoutButton.type = "button";
     logoutButton.textContent = "Đăng xuất";
     logoutButton.className =
-      "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl font-bold";
+      "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl font-bold shadow";
     logoutButton.onclick = function () {
       auth.signOut();
     };
     area.appendChild(logoutButton);
+
+    // Đưa Email xuống dưới
+    const emailLabel = document.createElement("span");
+    emailLabel.className =
+      "bg-white rounded-xl px-3 py-1.5 text-xs font-medium text-gray-700 shadow border border-slate-100";
+    emailLabel.textContent = user.email || "Tài khoản";
+    area.appendChild(emailLabel);
 
     // Ẩn nút đăng xuất cũ trong cửa sổ đăng nhập
     if (logout) logout.classList.add("hidden");
