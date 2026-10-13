@@ -422,56 +422,67 @@
     });
 
 
+
 let greetingTimer;
 
 auth.onAuthStateChanged(function (user) {
   const area = document.getElementById("auth-area");
   const logout = document.getElementById("auth-logout");
   const authSwitch = document.getElementById("auth-switch");
+  const modal = document.getElementById("auth-modal");
 
   clearTimeout(greetingTimer);
 
-  
-if (user) {
-  area.innerHTML = "";
+  if (user) {
+    area.innerHTML = "";
 
-  // Hiện email tài khoản
-  const emailLabel = document.createElement("span");
-  emailLabel.className =
-    "bg-white rounded-xl px-3 py-2 text-gray-800 shadow";
-  emailLabel.textContent = user.email || "Tài khoản";
-  area.appendChild(emailLabel);
+    // Hiện email
+    const emailLabel = document.createElement("span");
+    emailLabel.className =
+      "bg-white rounded-xl px-3 py-2 text-gray-800 shadow";
+    emailLabel.textContent = user.email || "Tài khoản";
+    area.appendChild(emailLabel);
 
-  // Nút đăng xuất luôn hiển thị khi đã đăng nhập
-  logout.textContent = "Đăng xuất";
-  logout.classList.remove("hidden");
+    // Nút đăng xuất luôn hiện ở ngoài
+    const logoutButton = document.createElement("button");
+    logoutButton.type = "button";
+    logoutButton.textContent = "Đăng xuất";
+    logoutButton.className =
+      "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl font-bold";
+    logoutButton.onclick = function () {
+      auth.signOut();
+    };
+    area.appendChild(logoutButton);
 
-  document.getElementById("auth-switch").classList.add("hidden");
+    // Ẩn nút đăng xuất cũ trong cửa sổ đăng nhập
+    if (logout) logout.classList.add("hidden");
+    if (authSwitch) authSwitch.classList.add("hidden");
 
-  // Chào mừng trong 3 giây
-  const greeting = document.createElement("div");
-  greeting.className =
-    "fixed top-16 right-4 z-[110] rounded-xl bg-white px-4 py-3 text-gray-800 shadow-lg";
-  greeting.textContent = "Xin chào Phạm Đức Duy!";
-  document.body.appendChild(greeting);
+    // Đóng cửa sổ đăng nhập sau khi đăng nhập thành công
+    if (modal) modal.classList.add("hidden");
 
-  setTimeout(function () {
-    greeting.remove();
-  }, 3000);
+    // Thông báo chào mừng
+    const greeting = document.createElement("div");
+    greeting.className =
+      "fixed top-16 right-4 z-[110] rounded-xl bg-white px-4 py-3 text-gray-800 shadow-lg";
+    greeting.textContent = "Xin chào Phạm Đức Duy!";
+    document.body.appendChild(greeting);
 
-  // Đóng cửa sổ đăng nhập nếu đang mở
-  document.getElementById("auth-modal").classList.add("hidden");
-}
+    greetingTimer = setTimeout(function () {
+      greeting.remove();
+    }, 3000);
 
   } else {
+    // Chưa đăng nhập: hiện hai nút có thể bấm
     area.innerHTML =
-      '<button onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
-      '<button onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
+      '<button type="button" onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
+      '<button type="button" onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
 
-    logout.classList.add("hidden");
-    authSwitch.classList.remove("hidden");
+    if (logout) logout.classList.add("hidden");
+    if (authSwitch) authSwitch.classList.remove("hidden");
   }
 });
+
 
   } catch (error) {
     console.error("Firebase khởi tạo thất bại:", error);
