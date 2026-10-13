@@ -425,11 +425,21 @@
       const area = document.getElementById("auth-area");
       const logout = document.getElementById("auth-logout");
 
-      if (user) {
-        area.innerHTML =
-          '<span class="bg-white rounded-xl px-3 py-2 text-gray-800">' +
-          'Xin chào, ' + user.email.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") +
-          '</span>';
+    ```javascript
+if (user) {
+  area.innerHTML =
+    '<span class="bg-white rounded-xl px-3 py-2 text-gray-800">' +
+    'Xin chào, ' + user.email.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+    '</span>';
+
+  setTimeout(function () {
+    area.innerHTML = "";
+  }, 3000);
+
+  logout.classList.remove("hidden");
+  document.getElementById("auth-switch").classList.add("hidden");
+} else {
+```
         logout.classList.remove("hidden");
         document.getElementById("auth-switch").classList.add("hidden");
       } else {
