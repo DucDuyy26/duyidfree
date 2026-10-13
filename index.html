@@ -448,20 +448,7 @@
         document.getElementById("auth-switch").classList.remove("hidden");
       }
 
-      } else {
-        area.innerHTML =
-          '<button onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
-          '<button onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
-        logout.classList.add("hidden");
-        document.getElementById("auth-switch").classList.remove("hidden");
-      }
-      
-        area.innerHTML =
-          '<button onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
-          '<button onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
-        logout.classList.add("hidden");
-        document.getElementById("auth-switch").classList.remove("hidden");
-      }
+ 
     });
   } catch (error) {
     console.error("Firebase khởi tạo thất bại:", error);
