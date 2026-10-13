@@ -264,5 +264,189 @@
     renderProducts();
     setupVietQR();
   </script>
+```html
+<!-- DUY STORE: ĐĂNG NHẬP / ĐĂNG KÝ -->
+<div id="auth-area" class="fixed top-4 right-4 z-50 flex gap-2">
+  <button onclick="openAuth('login')"
+    class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">
+    Đăng nhập
+  </button>
+  <button onclick="openAuth('register')"
+    class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">
+    Đăng ký
+  </button>
+</div>
+
+<div id="auth-modal"
+  class="hidden fixed inset-0 z-[100] bg-black/70 flex items-center justify-center p-4">
+  <div class="bg-white text-gray-800 rounded-2xl p-6 w-full max-w-md">
+    <h2 id="auth-title" class="text-2xl font-bold mb-4">
+      Đăng nhập
+    </h2>
+
+    <form id="auth-form" class="space-y-3">
+      <input id="auth-email" type="email" placeholder="Địa chỉ email"
+        autocomplete="email" required
+        class="w-full border rounded-lg p-3">
+
+      <input id="auth-password" type="password" placeholder="Mật khẩu"
+        autocomplete="current-password" minlength="6" required
+        class="w-full border rounded-lg p-3">
+
+      <input id="auth-confirm" type="password" placeholder="Nhập lại mật khẩu"
+        autocomplete="new-password"
+        class="hidden w-full border rounded-lg p-3">
+
+      <p id="auth-message" class="text-sm"></p>
+
+      <button id="auth-submit" type="submit"
+        class="w-full bg-blue-600 text-white p-3 rounded-lg font-bold">
+        Đăng nhập
+      </button>
+    </form>
+
+    <button onclick="closeAuth()"
+      class="mt-3 w-full border p-3 rounded-lg">
+      Đóng
+    </button>
+
+    <button id="auth-switch" onclick="switchAuth()"
+      class="mt-3 w-full text-blue-700">
+      Chưa có tài khoản? Đăng ký
+    </button>
+
+    <button id="auth-logout" onclick="logoutUser()"
+      class="hidden mt-3 w-full bg-red-600 text-white p-3 rounded-lg">
+      Đăng xuất
+    </button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script>
+(function () {
+  // Dùng cấu hình Firebase của DUY STORE
+  const firebaseConfig = {
+    apiKey: "AIzaSyBlrmazitpzqgNeMo7N-k59CdmOrVr8s9k",
+    authDomain: "duybomstoreid.firebaseapp.com",
+    databaseURL: "https://duybomstoreid-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "duybomstoreid",
+    storageBucket: "duybomstoreid.firebasestorage.app",
+    messagingSenderId: "759160286467",
+    appId: "1:759160286467:web:5f8c5495b6ca7bc3848d36",
+    measurementId: "G-QBVWVS9EPN"
+  };
+
+  let mode = "login";
+
+  try {
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    window.openAuth = function (nextMode) {
+      mode = nextMode;
+      document.getElementById("auth-modal").classList.remove("hidden");
+      document.getElementById("auth-message").textContent = "";
+      document.getElementById("auth-title").textContent =
+        mode === "login" ? "Đăng nhập DUY STORE" : "Tạo tài khoản";
+      document.getElementById("auth-submit").textContent =
+        mode === "login" ? "Đăng nhập" : "Đăng ký";
+      document.getElementById("auth-confirm").classList.toggle("hidden", mode !== "register");
+      document.getElementById("auth-confirm").required = mode === "register";
+      document.getElementById("auth-switch").textContent =
+        mode === "login" ? "Chưa có tài khoản? Đăng ký" : "Đã có tài khoản? Đăng nhập";
+      document.getElementById("auth-password").autocomplete =
+        mode === "login" ? "current-password" : "new-password";
+    };
+
+    window.switchAuth = function () {
+      openAuth(mode === "login" ? "register" : "login");
+    };
+
+    window.closeAuth = function () {
+      document.getElementById("auth-modal").classList.add("hidden");
+    };
+
+    window.logoutUser = function () {
+      auth.signOut();
+    };
+
+    document.getElementById("auth-form").addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const email = document.getElementById("auth-email").value.trim();
+      const password = document.getElementById("auth-password").value;
+      const confirm = document.getElementById("auth-confirm").value;
+      const message = document.getElementById("auth-message");
+      const submit = document.getElementById("auth-submit");
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        message.textContent = "Vui lòng nhập email hợp lệ.";
+        return;
+      }
+
+      if (mode === "register" && password !== confirm) {
+        message.textContent = "Mật khẩu nhập lại không khớp.";
+        return;
+      }
+
+      submit.disabled = true;
+      message.textContent = "Đang xử lý...";
+
+      try {
+        if (mode === "register") {
+          await auth.createUserWithEmailAndPassword(email, password);
+          message.textContent = "Đăng ký thành công!";
+        } else {
+          await auth.signInWithEmailAndPassword(email, password);
+          message.textContent = "Đăng nhập thành công!";
+        }
+      } catch (error) {
+        const errors = {
+          "auth/email-already-in-use": "Email này đã được đăng ký.",
+          "auth/invalid-email": "Email không hợp lệ.",
+          "auth/weak-password": "Mật khẩu cần ít nhất 6 ký tự.",
+          "auth/invalid-credential": "Email hoặc mật khẩu không đúng.",
+          "auth/user-disabled": "Tài khoản đã bị vô hiệu hóa.",
+          "auth/too-many-requests": "Bạn thử quá nhiều lần. Hãy thử lại sau.",
+          "auth/operation-not-allowed": "Firebase chưa bật đăng nhập bằng Email/Password.",
+          "auth/network-request-failed": "Lỗi mạng. Hãy kiểm tra kết nối."
+        };
+
+        message.textContent = errors[error.code] || ("Có lỗi: " + error.message);
+      } finally {
+        submit.disabled = false;
+      }
+    });
+
+    auth.onAuthStateChanged(function (user) {
+      const area = document.getElementById("auth-area");
+      const logout = document.getElementById("auth-logout");
+
+      if (user) {
+        area.innerHTML =
+          '<span class="bg-white rounded-xl px-3 py-2 text-gray-800">' +
+          'Xin chào, ' + user.email.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+          '</span>';
+        logout.classList.remove("hidden");
+        document.getElementById("auth-switch").classList.add("hidden");
+      } else {
+        area.innerHTML =
+          '<button onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
+          '<button onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
+        logout.classList.add("hidden");
+        document.getElementById("auth-switch").classList.remove("hidden");
+      }
+    });
+  } catch (error) {
+    console.error("Firebase khởi tạo thất bại:", error);
+    document.getElementById("auth-message").textContent =
+      "Không kết nối được Firebase. Hãy kiểm tra cấu hình.";
+  }
+})();
+</script>
+```
 </body>
 </html>
