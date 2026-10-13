@@ -426,23 +426,33 @@
       const logout = document.getElementById("auth-logout");
 
     ```javascript
-if (user) {
-  area.innerHTML =
-    '<span class="bg-white rounded-xl px-3 py-2 text-gray-800">' +
-    'Xin chào, ' + user.email.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") +
-    '</span>';
+```javascript
+      if (user) {
+        area.innerHTML =
+          '<span class="bg-white rounded-xl px-3 py-2 text-gray-800">' +
+          'Xin chào, ' +
+          user.email.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") +
+          '</span>';
 
-  setTimeout(function () {
-    area.innerHTML = "";
-  }, 3000);
-
-  logout.classList.remove("hidden");
-  document.getElementById("auth-switch").classList.add("hidden");
-} else {
-```
         logout.classList.remove("hidden");
         document.getElementById("auth-switch").classList.add("hidden");
+
+        setTimeout(function () {
+          const currentUser = firebase.auth().currentUser;
+          if (currentUser && currentUser.uid === user.uid) {
+            const greeting = area.querySelector("span");
+            if (greeting) greeting.remove();
+          }
+        }, 3000);
+
       } else {
+        area.innerHTML =
+          '<button onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
+          '<button onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
+        logout.classList.add("hidden");
+        document.getElementById("auth-switch").classList.remove("hidden");
+      }
+```
         area.innerHTML =
           '<button onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
           '<button onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
