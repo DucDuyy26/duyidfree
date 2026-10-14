@@ -574,13 +574,24 @@ auth.onAuthStateChanged(function (user) {
   }
 
  
+
 function logoutUser() {
-  closeAccountMenu();
-  auth.signOut().catch(function (error) {
-    console.error("Đăng xuất thất bại:", error);
-    alert("Không thể đăng xuất. Vui lòng thử lại.");
-  });
+  if (typeof auth === "undefined") {
+    alert("Không tìm thấy kết nối đăng nhập Firebase.");
+    return;
+  }
+
+  auth.signOut()
+    .then(function () {
+      closeAccountMenu();
+      alert("Đã đăng xuất thành công!");
+    })
+    .catch(function (error) {
+      console.error("Lỗi đăng xuất:", error);
+      alert("Đăng xuất thất bại: " + error.message);
+    });
 }
+
 
   function viewOrderHistory() {
     closeAccountMenu();
