@@ -404,43 +404,31 @@
 
 let greetingTimer;
 
+
 auth.onAuthStateChanged(function (user) {
   const area = document.getElementById("auth-area");
   const logout = document.getElementById("auth-logout");
   const authSwitch = document.getElementById("auth-switch");
   const modal = document.getElementById("auth-modal");
 
+  const menuButton = document.getElementById("account-menu-button");
+  const menuPanel = document.getElementById("account-menu-panel");
+  const emailDisplay = document.getElementById("account-menu-email");
+
   clearTimeout(greetingTimer);
 
   if (user) {
-    area.innerHTML = "";
+    if (area) area.innerHTML = "";
 
-  // Đưa nút Đăng xuất lên trên
-    const logoutButton = document.createElement("button");
-    logoutButton.type = "button";
-    logoutButton.textContent = "Đăng xuất";
-    logoutButton.className =
-      "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl font-bold shadow";
-    logoutButton.onclick = function () {
-      auth.signOut();
-    };
-    area.appendChild(logoutButton);
+    if (menuButton) menuButton.hidden = false;
+    if (emailDisplay) {
+      emailDisplay.textContent = user.email || "Tài khoản";
+    }
 
-    // Đưa Email xuống dưới
-    const emailLabel = document.createElement("span");
-    emailLabel.className =
-      "bg-white rounded-xl px-3 py-1.5 text-xs font-medium text-gray-700 shadow border border-slate-100";
-    emailLabel.textContent = user.email || "Tài khoản";
-    area.appendChild(emailLabel);
-
-    // Ẩn nút đăng xuất cũ trong cửa sổ đăng nhập
     if (logout) logout.classList.add("hidden");
     if (authSwitch) authSwitch.classList.add("hidden");
-
-    // Đóng cửa sổ đăng nhập sau khi đăng nhập thành công
     if (modal) modal.classList.add("hidden");
 
-    // Thông báo chào mừng
     const greeting = document.createElement("div");
     greeting.className =
       "fixed top-16 right-4 z-[110] rounded-xl bg-white px-4 py-3 text-gray-800 shadow-lg";
@@ -452,10 +440,14 @@ auth.onAuthStateChanged(function (user) {
     }, 3000);
 
   } else {
-    // Chưa đăng nhập: hiện hai nút có thể bấm
-    area.innerHTML =
-      '<button type="button" onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
-      '<button type="button" onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
+    if (menuButton) menuButton.hidden = true;
+    if (menuPanel) menuPanel.hidden = true;
+
+    if (area) {
+      area.innerHTML =
+        '<button type="button" onclick="openAuth(\'login\')" class="bg-blue-600 text-white px-4 py-2 rounded-xl font-bold">Đăng nhập</button>' +
+        '<button type="button" onclick="openAuth(\'register\')" class="bg-purple-600 text-white px-4 py-2 rounded-xl font-bold">Đăng ký</button>';
+    }
 
     if (logout) logout.classList.add("hidden");
     if (authSwitch) authSwitch.classList.remove("hidden");
@@ -581,11 +573,14 @@ auth.onAuthStateChanged(function (user) {
     button.setAttribute("aria-expanded", String(isOpening));
   }
 
-  function closeAccountMenu() {
-    document.getElementById("account-menu-panel").hidden = true;
-    document.getElementById("account-menu-button")
-      .setAttribute("aria-expanded", "false");
-  }
+ 
+function logoutUser() {
+  closeAccountMenu();
+  auth.signOut().catch(function (error) {
+    console.error("Đăng xuất thất bại:", error);
+    alert("Không thể đăng xuất. Vui lòng thử lại.");
+  });
+}
 
   function viewOrderHistory() {
     closeAccountMenu();
