@@ -574,13 +574,13 @@ auth.onAuthStateChanged(function (user) {
     button.setAttribute("aria-expanded", String(isOpening));
   }
 
- 
-
 
 
 
 async function logoutUser() {
+  alert("NÚT ĐĂNG XUẤT ĐÃ ĐƯỢC BẤM");
   closeAccountMenu();
+
 
   const auth = window.auth || (window.firebase && firebase.auth
     ? firebase.auth()
