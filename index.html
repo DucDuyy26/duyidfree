@@ -405,7 +405,24 @@
 
 let greetingTimer;
 
+async function setupUserWallet(user) {
+  const db = firebase.firestore();
+  const userRef = db.collection("users").doc(user.uid);
 
+  const doc = await userRef.get();
+
+  if (!doc.exists) {
+    await userRef.set({
+      email: user.email || "",
+      balance: 0,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
+
+  const updatedDoc = await userRef.get();
+  return Number(updatedDoc.data()?.balance || 0);
+}
+    
 auth.onAuthStateChanged(function (user) {
   const area = document.getElementById("auth-area");
   const logout = document.getElementById("auth-logout");
@@ -426,6 +443,31 @@ auth.onAuthStateChanged(function (user) {
       emailDisplay.textContent = user.email || "Tài khoản";
     }
 
+// Hiển thị số dư tài khoản
+if (menuPanel) {
+  let walletDisplay = document.getElementById("account-wallet-balance");
+
+  if (!walletDisplay) {
+    walletDisplay = document.createElement("div");
+    walletDisplay.id = "account-wallet-balance";
+    walletDisplay.className =
+      "mx-3 my-2 rounded-xl bg-amber-50 px-4 py-3 font-bold text-gray-800";
+    menuPanel.insertBefore(walletDisplay, menuPanel.firstChild);
+  }
+
+  walletDisplay.textContent = "Số dư: đang tải...";
+
+  setupUserWallet(user)
+    .then(function (balance) {
+      walletDisplay.textContent =
+        "Số dư: " + balance.toLocaleString("vi-VN") + "đ";
+    })
+    .catch(function (error) {
+      console.error("Lỗi tải số dư:", error);
+      walletDisplay.textContent = "Không tải được số dư";
+    });
+}
+    
     if (logout) logout.classList.add("hidden");
     if (authSwitch) authSwitch.classList.add("hidden");
     if (modal) modal.classList.add("hidden");
