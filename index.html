@@ -470,6 +470,142 @@ auth.onAuthStateChanged(function (user) {
   }
 })();
 </script>
-```
+
+<!-- MENU TÀI KHOẢN -->
+<style>
+  #account-menu-button {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 1001;
+    width: 46px;
+    height: 46px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #fff;
+    color: #701f32;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px #00000012;
+  }
+
+  #account-menu-panel {
+    position: fixed;
+    top: 74px;
+    right: 18px;
+    z-index: 1000;
+    width: 270px;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 15px 40px #00000020;
+    color: #292124;
+  }
+
+  #account-menu-panel[hidden] {
+    display: none;
+  }
+
+  .account-menu-email {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    background: #f8f3ef;
+    overflow-wrap: anywhere;
+    font-size: 13px;
+  }
+
+  .account-menu-item {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #292124;
+    text-align: left;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .account-menu-item:hover {
+    background: #f8f3ef;
+  }
+
+  .account-menu-logout {
+    margin-top: 6px;
+    color: #b42336;
+  }
+</style>
+
+<button
+  id="account-menu-button"
+  type="button"
+  aria-label="Mở menu tài khoản"
+  aria-expanded="false"
+  onclick="toggleAccountMenu()"
+  hidden
+>☰</button>
+
+<div id="account-menu-panel" hidden>
+  <div class="account-menu-email">
+    <strong>Tài khoản của bạn</strong>
+    <div id="account-menu-email">Chưa đăng nhập</div>
+  </div>
+
+  <a class="account-menu-item" href="#thanh-toan"
+     onclick="closeAccountMenu()">
+    💳 Nạp tiền
+  </a>
+
+  <button class="account-menu-item" type="button"
+          onclick="viewOrderHistory()">
+    📋 Lịch sử giao dịch
+  </button>
+
+  <button class="account-menu-item account-menu-logout"
+          type="button" onclick="logoutUser()">
+    ↪ Đăng xuất
+  </button>
+</div>
+
+<script>
+  function toggleAccountMenu() {
+    const panel = document.getElementById("account-menu-panel");
+    const button = document.getElementById("account-menu-button");
+    const isOpening = panel.hidden;
+
+    panel.hidden = !isOpening;
+    button.setAttribute("aria-expanded", String(isOpening));
+  }
+
+  function closeAccountMenu() {
+    document.getElementById("account-menu-panel").hidden = true;
+    document.getElementById("account-menu-button")
+      .setAttribute("aria-expanded", "false");
+  }
+
+  function viewOrderHistory() {
+    closeAccountMenu();
+    alert("Mục lịch sử đã được tạo giao diện. Để hiển thị giao dịch thật, shop cần lưu và đọc dữ liệu đơn hàng.");
+  }
+
+  document.addEventListener("click", function(event) {
+    const panel = document.getElementById("account-menu-panel");
+    const button = document.getElementById("account-menu-button");
+
+    if (
+      panel && button &&
+      !panel.contains(event.target) &&
+      !button.contains(event.target)
+    ) {
+      closeAccountMenu();
+    }
+  });
+</script>
+</body>
+
 </body>
 </html>
