@@ -575,21 +575,18 @@ auth.onAuthStateChanged(function (user) {
 
  
 
-function logoutUser() {
-  if (typeof auth === "undefined") {
-    alert("Không tìm thấy kết nối đăng nhập Firebase.");
-    return;
-  }
 
-  auth.signOut()
-    .then(function () {
-      closeAccountMenu();
-      alert("Đã đăng xuất thành công!");
-    })
-    .catch(function (error) {
+function logoutUser() {
+  closeAccountMenu();
+
+  if (typeof auth !== "undefined" && auth) {
+    auth.signOut().catch(function (error) {
       console.error("Lỗi đăng xuất:", error);
       alert("Đăng xuất thất bại: " + error.message);
     });
+  } else {
+    alert("Chưa kết nối được Firebase. Vui lòng kiểm tra code đăng nhập.");
+  }
 }
 
 
