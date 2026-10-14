@@ -14,38 +14,39 @@
       extend: {
         colors: {
           brand: {
-            50: '#F8F0F2',
-            100: '#EBD9DE',
-            300: '#C88B9B',
-            500: '#8D354C',
-            600: '#701F32',
-            700: '#4A1422'
+            50: '#FDF2F4',
+            100: '#F5D6DE',
+            300: '#D9829B',
+            500: '#9E2A47',
+            600: '#7A1C34', // Đỏ đô chủ đạo
+            700: '#5C1326', // Đỏ đô đậm sang trọng
+            900: '#3D0A17'
           }
         },
         boxShadow: {
-          soft: '0 18px 55px rgba(74, 20, 34, .10)'
+          soft: '0 18px 55px rgba(122, 28, 52, .12)'
         }
       }
     }
   }
-</script>
+  </script>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-   
-.hero-grid {
-  background-color: #F8F3EF;
-  background-image:
-    radial-gradient(circle at 15% 15%, rgba(112, 31, 50, .13), transparent 35%),
-    radial-gradient(circle at 85% 20%, rgba(214, 180, 119, .18), transparent 32%);
-}
+    
+    .hero-grid {
+      background-color: #FAF4F5;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(122, 28, 52, .12), transparent 38%),
+        radial-gradient(circle at 85% 20%, rgba(193, 154, 107, .15), transparent 35%);
+    }
 
     .product-card { transition: transform .2s ease, box-shadow .2s ease; }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(15,23,42,.10); }
-    .modal-backdrop { background: rgba(15, 23, 42, .6); backdrop-filter: blur(5px); }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(122,28,52,.12); }
+    .modal-backdrop { background: rgba(62, 10, 23, .65); backdrop-filter: blur(6px); }
   </style>
 </head>
-<body class="bg-[#F8F3EF] text-[#292124] antialiased">
+<body class="bg-[#FAF4F5] text-[#3D0A17] antialiased">
 
   <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Menu chính">
