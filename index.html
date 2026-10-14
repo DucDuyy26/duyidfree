@@ -323,6 +323,7 @@
   try {
     if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+    window.auth = auth;
 
     window.openAuth = function (nextMode) {
       mode = nextMode;
@@ -576,18 +577,21 @@ auth.onAuthStateChanged(function (user) {
  
 
 
+
 function logoutUser() {
   closeAccountMenu();
 
-  if (typeof auth !== "undefined" && auth) {
-    auth.signOut().catch(function (error) {
-      console.error("Lỗi đăng xuất:", error);
-      alert("Đăng xuất thất bại: " + error.message);
-    });
+  if (window.auth) {
+    window.auth.signOut()
+      .catch(function (error) {
+        console.error("Lỗi đăng xuất:", error);
+        alert("Đăng xuất thất bại: " + error.message);
+      });
   } else {
-    alert("Chưa kết nối được Firebase. Vui lòng kiểm tra code đăng nhập.");
+    alert("Không tìm thấy Firebase. Hãy kiểm tra phần khởi tạo Firebase.");
   }
 }
+
 
 
   function viewOrderHistory() {
