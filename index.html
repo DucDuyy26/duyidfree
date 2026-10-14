@@ -31,16 +31,20 @@
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    .hero-grid {
-      background-image: radial-gradient(circle at 15% 15%, rgba(129,140,248,.22), transparent 35%),
-                        radial-gradient(circle at 85% 20%, rgba(45,212,191,.16), transparent 30%);
-    }
+   
+.hero-grid {
+  background-color: #F8F3EF;
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(112, 31, 50, .13), transparent 35%),
+    radial-gradient(circle at 85% 20%, rgba(214, 180, 119, .18), transparent 32%);
+}
+
     .product-card { transition: transform .2s ease, box-shadow .2s ease; }
     .product-card:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(15,23,42,.10); }
     .modal-backdrop { background: rgba(15, 23, 42, .6); backdrop-filter: blur(5px); }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="bg-[#F8F3EF] text-[#292124] antialiased">
 
   <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Menu chính">
@@ -172,7 +176,11 @@
             <h3 class="mt-2 text-lg font-extrabold">${p.name}</h3>
             <p class="mt-2 min-h-[48px] text-sm leading-6 text-slate-500">${p.description}</p>
             <div class="mt-4 flex items-end gap-2"><span class="text-xl font-black text-slate-900">${money(p.price)}</span></div>
-            <button data-buy="${p.id}" class="mt-5 w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-extrabold text-white transition hover:bg-brand-600">Mua ngay <span aria-hidden="true">→</span></button>
+            
+<button data-buy="${p.id}" class="mt-5 w-full rounded-xl bg-brand-600 px-4 py-3 text-sm font-extrabold text-white shadow-md shadow-rose-950/10 transition hover:bg-brand-700 hover:shadow-lg">
+  Mua ngay <span aria-hidden="true">→</span>
+</button>
+
           </div>
         </article>
       `).join("");
