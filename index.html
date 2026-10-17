@@ -146,10 +146,21 @@ tailwind.config = {
     // =========================================
     // SẢN PHẨM (Bạn có thể thêm/sửa tại đây)
     // =========================================
-    const PRODUCTS = [
-      { id: 1, name: "Thuê ID Apple", category: "Dịch vụ", price: 19999, oldPrice: 30000, emoji: "🍏", gradient: "from-indigo-100 to-violet-200", tag: "Hot", description: "Dịch vụ thuê ID Apple theo sản phẩm uy tín, nhanh chóng." },
-      { id: 2, name: "Tài khoản Minecraft", category: "Game", price: 250000, oldPrice: 300000, emoji: "⛏️", gradient: "from-emerald-100 to-teal-200", tag: "Phổ biến", description: "Tài khoản Minecraft Java & Bedrock chính hãng." }
-    ];
+   const PRODUCTS = [
+  {
+    id: 3,
+    name: "Lấy ID Apple",
+    category: "Dịch vụ",
+    price: 0,
+    oldPrice: 0,
+    emoji: "🍏",
+    gradient: "from-rose-100 to-red-200",
+    tag: "Mới",
+    description: "Nhấn nút Lấy ID để tiếp tục.",
+    image: "https://i.postimg.cc/kgyk2gVx/IMG-5545.jpg",
+    externalLink: "https://link4sub.com/note/bZHS"
+  }
+];
 
     const money = value => new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND", maximumFractionDigits: 0 }).format(value);
     const productGrid = document.getElementById("product-grid");
@@ -162,7 +173,11 @@ tailwind.config = {
        <article class="product-card overflow-hidden rounded-3xl border border-[#E8D9D5] bg-white">
           <div class="relative bg-gradient-to-br ${p.gradient} p-5">
             ${p.tag ? `<span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-extrabold text-slate-700">${p.tag}</span>` : ""}
-            <div class="grid aspect-[1.55/1] place-items-center rounded-2xl bg-white/40 text-7xl">${p.emoji}</div>
+           <div class="grid aspect-[1.55/1] place-items-center overflow-hidden rounded-2xl bg-white/40">
+  ${p.image
+    ? `<img src="${p.image}" alt="${p.name}" class="h-full w-full object-cover">`
+    : `<span class="text-7xl">${p.emoji}</span>`}
+</div>
           </div>
           <div class="p-5">
             <div class="flex items-center justify-between gap-3"><span class="text-xs font-bold text-brand-600">${p.category}</span></div>
@@ -170,9 +185,14 @@ tailwind.config = {
             <p class="mt-2 min-h-[48px] text-sm leading-6 text-slate-500">${p.description}</p>
             <div class="mt-4 flex items-end gap-2"><span class="text-xl font-black text-slate-900">${money(p.price)}</span></div>
             
-<button data-buy="${p.id}" class="mt-5 w-full rounded-xl bg-brand-600 px-4 py-3 text-sm font-extrabold text-white shadow-md shadow-rose-950/10 transition hover:bg-brand-700 hover:shadow-lg">
-  Mua ngay <span aria-hidden="true">→</span>
-</button>
+${p.externalLink
+  ? `<a href="${p.externalLink}" target="_blank" rel="noopener noreferrer"
+       class="mt-5 flex w-full items-center justify-center rounded-xl bg-brand-600 px-4 py-3 text-sm font-extrabold text-white shadow-md transition hover:bg-brand-700">
+       Lấy ID <span class="ml-2" aria-hidden="true">→</span>
+     </a>`
+  : `<button data-buy="${p.id}" class="mt-5 w-full rounded-xl bg-brand-600 px-4 py-3 text-sm font-extrabold text-white shadow-md shadow-rose-950/10 transition hover:bg-brand-700">
+       Mua ngay <span aria-hidden="true">→</span>
+     </button>`}
 
           </div>
         </article>
