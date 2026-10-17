@@ -146,7 +146,7 @@ tailwind.config = {
     // =========================================
     // SẢN PHẨM (Bạn có thể thêm/sửa tại đây)
     // =========================================
-   const PRODUCTS = [
+ const PRODUCTS = [
   {
     id: 3,
     name: "Lấy ID Apple",
@@ -256,10 +256,18 @@ ${p.externalLink
       img.onload = () => { img.classList.remove("hidden"); document.getElementById("qr-placeholder").classList.add("hidden"); };
     }
 
-    document.getElementById("copy-account").addEventListener("click", async () => {
-      await copyText(BANK_CONFIG.accountNo);
-      document.getElementById("copy-status").textContent = "Đã sao chép số tài khoản!";
-    });
+   const copyAccountButton = document.getElementById("copy-account");
+
+if (copyAccountButton) {
+  copyAccountButton.addEventListener("click", async () => {
+    await copyText(BANK_CONFIG.accountNo);
+    const copyStatus = document.getElementById("copy-status");
+
+    if (copyStatus) {
+      copyStatus.textContent = "Đã sao chép số tài khoản!";
+    }
+  });
+}
 
     document.getElementById("year").textContent = new Date().getFullYear();
     renderProducts();
